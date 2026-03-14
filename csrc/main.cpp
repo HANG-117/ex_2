@@ -2,8 +2,8 @@
 #include "Graph.h"
 #include "Tourism.h"
 using namespace std;
-CGraph graph;
 int main(){
+    Tourism tourism;
     while(true){
         cout<<"====景区信息管理系统===="<<endl;
         cout<<"1.添加景区景点信息"<<endl;
@@ -18,7 +18,7 @@ int main(){
         switch(choice){
             case 1:
                 while(true){   
-                    CreateCGraph();
+                    tourism.CreateCGraph();
                     cout<<"景区信息添加完成！"<<endl;
                     cout<<"是否继续添加景区信息？"<<endl;
                     cout<<"1.继续添加"<<endl;
@@ -35,10 +35,10 @@ int main(){
                 break;
             case 2:
                 while(true){
-                    graph.Display();
+                    tourism.graph.Display();
                     cout<<"请输入想查询景点编号：";
                     cin >> choice;
-                    GetSpotInfo(choice);
+                    tourism.GetSpotInfo(choice);
                     cout<< "是否继续查询" <<endl;
                     cout<<"1.继续查询"<<endl;
                     cout<<"0.返回主菜单"<<endl;

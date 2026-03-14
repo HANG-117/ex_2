@@ -5,8 +5,11 @@
 #include<sstream>
 #include<cstring>
 using namespace std;
-extern CGraph graph;
-void CreateCGraph(void){
+Tourism::Tourism(void){
+}
+Tourism::~Tourism(void){
+}
+void Tourism::CreateCGraph(void){
     Vex vexs[MAX_VEX];
     Edge edges[MAX_VEX * MAX_VEX/2];
     int vexnum, edgenum;
@@ -54,7 +57,7 @@ void CreateCGraph(void){
     vex_file.close();
     edge_file.close();
 }
-void GetSpotInfo(int v){
+void Tourism::GetSpotInfo(int v){
     Vex vex = graph.GetVex(v);
     cout << vex.name << " " << vex.desc << endl;
     Edge aEdge[MAX_VEX];
