@@ -17,13 +17,40 @@ int main(){
         cin>>choice;
         switch(choice){
             case 1:
-                CreateCGraph();
+                while(true){   
+                    CreateCGraph();
+                    cout<<"景区信息添加完成！"<<endl;
+                    cout<<"是否继续添加景区信息？"<<endl;
+                    cout<<"1.继续添加"<<endl;
+                    cout<<"0.返回主菜单"<<endl;
+                    cout<<"请输入选择：";
+                    cin >> choice;
+                    if(choice == 1){
+                        continue;
+                    }
+                    else {
+                        break;
+                    }
+                }
                 break;
             case 2:
-                graph.Display();
-                cout<<"请输入想查询景点编号：";
-                cin >> choice;
-                GetSpotInfo(choice);
+                while(true){
+                    graph.Display();
+                    cout<<"请输入想查询景点编号：";
+                    cin >> choice;
+                    GetSpotInfo(choice);
+                    cout<< "是否继续查询" <<endl;
+                    cout<<"1.继续查询"<<endl;
+                    cout<<"0.返回主菜单"<<endl;
+                    cout<<"请输入选择：";
+                    cin >> choice;
+                    if(choice == 1){
+                        continue;
+                    }
+                    else {
+                        break;
+                    }
+                }
                 break;
             case 0:
                 cout<<"退出系统！"<<endl;
