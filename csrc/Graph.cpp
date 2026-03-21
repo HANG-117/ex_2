@@ -62,3 +62,34 @@ int CGraph::FindEdge(int v,Edge aEdge[]){
     }
     return count;
 }
+void CGraph::DFS(int nVex, bool visited[], int aPath[], int &index,PathList &pList){
+    visited[nVex] = true;
+    aPath[index++] = nVex;
+    if(index == m_nVexNum){
+        PathList newNode = new path;
+        for(int i=0;i<index;i++){
+            newNode->vexs[i] = aPath[i];
+        }
+        pList ->next = newNode;
+        newNode->next = nullptr;
+        pList = newNode;
+        return;
+    }
+    Edge aEdge[MAX_VEX];
+    int edgeCount = FindEdge(nVex, aEdge);
+    for(int i=0;i<edgeCount;i++){
+        if(!visited[aEdge[i].vex2]){
+            DFS(aEdge[i].vex2, visited, aPath, index, pList);
+            visited[aEdge[i].vex2] = false;
+            index--;
+        }
+    }
+}
+
+void CGraph::DFSTraverse(int nVex, PathList &pList){
+    bool visited[MAX_VEX] = {false};
+    int aPath[MAX_VEX];
+    int index = 0;
+    pList -> next = nullptr;
+    DFS(nVex, visited, aPath, index, pList);
+}

@@ -57,7 +57,10 @@ void Tourism::CreateCGraph(void){
     vex_file.close();
     edge_file.close();
 }
-void Tourism::GetSpotInfo(int v){
+void Tourism::GetSpotInfo(){
+    int v;
+    cout<<"请输入查询的景点编号：";
+    cin >> v;
     Vex vex = graph.GetVex(v);
     cout << vex.name << " " << vex.desc << endl;
     Edge aEdge[MAX_VEX];
@@ -65,5 +68,25 @@ void Tourism::GetSpotInfo(int v){
     cout<<"与景点"<<vex.num<<"相邻的景点有："<<endl;
     for(int i=0;i<edgeCount;i++){
         cout<< vex.name << "->" << graph.GetVex(aEdge[i].vex2).name << " " << aEdge[i].weight <<"m" <<endl;
+    }
+}
+
+void Tourism::TravelPath(){
+    int start;
+    cout<<"请输入起点景点编号：";
+    cin >> start;
+    PathList head = new path;
+    head->next = nullptr;
+    PathList tail = head;
+
+    graph.DFSTraverse(start, tail);
+    cout<<"从景点"<<graph.GetVex(start).name<<"出发的所有路径："<<endl;
+    PathList current = head->next;
+    while(current != nullptr){
+        for(int i=0;i<graph.GetVexNum();i++){
+            cout<< graph.GetVex(current->vexs[i]).name << "->";
+        }
+        cout<<"END"<<endl;
+        current = current->next;
     }
 }

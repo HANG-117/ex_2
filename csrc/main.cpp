@@ -36,9 +36,24 @@ int main(){
             case 2:
                 while(true){
                     tourism.graph.Display();
-                    cout<<"请输入想查询景点编号：";
+                    tourism.GetSpotInfo();
+                    cout<< "是否继续查询" <<endl;
+                    cout<<"1.继续查询"<<endl;
+                    cout<<"0.返回主菜单"<<endl;
+                    cout<<"请输入选择：";
                     cin >> choice;
-                    tourism.GetSpotInfo(choice);
+                    if(choice == 1){
+                        continue;
+                    }
+                    else {
+                        break;
+                    }
+                }
+                break;
+            case 3:
+                while(true){
+                    tourism.graph.Display();
+                    tourism.TravelPath();
                     cout<< "是否继续查询" <<endl;
                     cout<<"1.继续查询"<<endl;
                     cout<<"0.返回主菜单"<<endl;

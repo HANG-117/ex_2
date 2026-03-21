@@ -13,6 +13,12 @@ struct Edge
     int vex2;
     int weight;
 };
+
+typedef struct path{
+    int vexs[MAX_VEX];
+    path *next;
+}*PathList;
+
 class CGraph
 {
     private:
@@ -29,5 +35,8 @@ class CGraph
         Vex GetVex(int v);
         int GetVexNum(){ return m_nVexNum; }
         int FindEdge(int v,Edge aEdge[]);
+        void DFS(int nVex, bool visited[], int aPath[], int &index,PathList &pList);
+        void DFSTraverse(int nVex, PathList &pList);
 };
+
 #endif
