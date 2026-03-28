@@ -67,6 +67,29 @@ int main(){
                     }
                 }
                 break;
+            case 4:
+                while(true){
+                    cout<<"景点信息："<<endl;
+                    tourism.graph.Display();
+                    cout<<"最短路径查询："<<endl;
+                    tourism.FindShortPath();
+                    cout<< "是否继续查询" <<endl;
+                    cout<<"1.继续查询"<<endl;
+                    cout<<"0.返回主菜单"<<endl;
+                    cout<<"请输入选择：";
+                    cin >> choice;
+                    if(choice == 1){
+                        continue;
+                    }
+                    else {
+                        break;
+                    }
+                }
+                break;
+            case 5:
+                cout<<"电路规划："<<endl;
+                tourism.DesignPath();
+                break;
             case 0:
                 cout<<"退出系统！"<<endl;
                 return 0;

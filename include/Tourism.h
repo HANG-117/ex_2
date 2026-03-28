@@ -10,5 +10,7 @@ public:
     void CreateCGraph(void);
     void GetSpotInfo();
     void TravelPath();
+    void FindShortPath(void);
+    void DesignPath(void);
 };
 #endif

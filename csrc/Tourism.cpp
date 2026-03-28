@@ -90,3 +90,39 @@ void Tourism::TravelPath(){
         current = current->next;
     }
 }
+
+void Tourism::FindShortPath(void){
+    int start, end;
+    cout<<"请输入起点景点编号：";
+    cin >> start;
+    cout<<"请输入终点景点编号：";
+    cin >> end;
+    int aPath[MAX_VEX];
+    int totalDist = graph.FindShortestPath(start, end, aPath);
+    if(totalDist == -1){
+        cout<<"从景点"<<graph.GetVex(start).name<<"到景点"<<graph.GetVex(end).name<<"不可达！"<<endl;
+        return;
+    }
+    cout<<"从景点"<<graph.GetVex(start).name<<"到景点"<<graph.GetVex(end).name<<"的最短路径为：";
+    for(int i=0;aPath[i] != -1 && i < MAX_VEX; i++){
+        cout<< graph.GetVex(aPath[i]).name << "->";
+    }
+    cout<<"END"<<endl;
+    cout<<"最短距离为"<<totalDist<<"m"<<endl;
+}
+
+void Tourism::DesignPath(void){
+    Edge aEdge[MAX_VEX];
+    int edgeCount = graph.FindMinTree(aEdge);
+    int sum = 0;
+    if(edgeCount != graph.GetVexNum() - 1){
+        cout<<"无法覆盖所有景区！"<<endl;
+        return;
+     }
+    cout<<"铺设线路如下："<<endl;
+    for(int i=0;i<edgeCount;i++){
+        cout<< graph.GetVex(aEdge[i].vex1).name <<"-" << graph.GetVex(aEdge[i].vex2).name << " 距离为：" << aEdge[i].weight << endl;
+        sum += aEdge[i].weight;
+    }
+    cout<<"电线总距离为："<<sum<<endl;
+}

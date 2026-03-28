@@ -1,6 +1,8 @@
 #ifndef GRAPH_H
 #define GRAPH_H
 #define MAX_VEX 20
+#define INF 0x3f3f3f3f
+
 struct Vex
 {
     int num;
@@ -37,6 +39,7 @@ class CGraph
         int FindEdge(int v,Edge aEdge[]);
         void DFS(int nVex, bool visited[], int aPath[], int &index,PathList &pList);
         void DFSTraverse(int nVex, PathList &pList);
+        int FindShortestPath(int nVexStart, int nVexEnd, int aPath[]);
+        int FindMinTree(Edge aEdge[]);
 };
-
 #endif
